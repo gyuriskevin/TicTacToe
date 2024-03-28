@@ -32,6 +32,10 @@ def play(page: ft.Page):
         if board[row][col] == "":
             board[row][col] = current_player
             presses[index].text = current_player
+            if current_player == "X":
+                presses[index].color = "#1776FD"
+            else:
+                presses[index].color = "#FFFFFF"
             result = check_winner()
             if result:
                 if result == "DRAW":
@@ -58,14 +62,14 @@ def play(page: ft.Page):
             style=ft.ButtonStyle(shape=ft.RoundedRectangleBorder()),
             width=110,
             height=110,
-            bgcolor=ft.colors.WHITE54,
+            bgcolor="#4E5057",
+            color="white",      
             on_click=on_button_click(i),
-            color=ft.colors.WHITE,
         )
         presses.append(button)
     playGround = ft.Container(
         padding=25,
-        bgcolor=ft.colors.GREY_700,
+        bgcolor="#1B1E22",
         height=400,
         width=400,
         content=ft.Column(
@@ -77,14 +81,17 @@ def play(page: ft.Page):
         ),
     )
     winnerButton = ft.ElevatedButton(
-        style=ft.ButtonStyle(shape=ft.RoundedRectangleBorder()),
-        bgcolor=ft.colors.YELLOW,
-        color=ft.colors.BLACK,
+        style=ft.ButtonStyle(shape=ft.RoundedRectangleBorder(),),
+        bgcolor="#1777FF",  
+        color="white",      
+        
     )
     
     restartButton = ft.ElevatedButton(
         text="Restart",
         style=ft.ButtonStyle(shape=ft.RoundedRectangleBorder()),
+        bgcolor="#424242",  
+        color="white",      
         on_click=lambda e: restart_game(page),
     )
     
@@ -107,6 +114,7 @@ def main(page: ft.Page):
     page.title = "TicTacToe"
     page.horizontal_alignment = "center"
     page.vertical_alignment = "center"
+    page.bgcolor = "#22242A"  
 
     play(page)
 
