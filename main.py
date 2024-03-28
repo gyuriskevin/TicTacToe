@@ -1,6 +1,10 @@
 import flet as ft
 
 def play(page: ft.Page):
+    page.add(ft.Text("Tic Tac Toe",
+                     size = 30,
+                     color = ft.colors.WHITE,
+                     ))
     current_player = "X" 
     playGround = []
     board = [["" for _ in range(3)] for _ in range(3)]
@@ -60,18 +64,18 @@ def play(page: ft.Page):
         button = ft.ElevatedButton(
             text="",
             style=ft.ButtonStyle(shape=ft.RoundedRectangleBorder()),
-            width=110,
-            height=110,
+            width=95,
+            height=95,
             bgcolor="#4E5057",
             color="white",      
             on_click=on_button_click(i),
         )
         presses.append(button)
     playGround = ft.Container(
-        padding=25,
+        padding=22,
         bgcolor="#1B1E22",
-        height=400,
-        width=400,
+        height=350,
+        width=350,
         content=ft.Column(
             controls=[
                 ft.Row(controls=presses[:3]),
@@ -115,7 +119,13 @@ def main(page: ft.Page):
     page.horizontal_alignment = "center"
     page.vertical_alignment = "center"
     page.bgcolor = "#22242A"  
+    page.window_max_height = 600
+    page.window_min_height = 500
+    page.window_max_width = 600
+    page.window_min_width = 500
+    page.window_left = 500
 
     play(page)
+    
 
 ft.app(target=main)
